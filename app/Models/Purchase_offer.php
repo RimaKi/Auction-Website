@@ -5,24 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PurchaseOffer extends Model
+class Purchase_offer extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'postId',
+        'auction_product_id',
         'userId',
         'amount',
-        'isSelected'
     ];
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'userId', 'id');
+        return $this->belongsTo(User::class);
     }
 
-    public function post()
+    public function auction_product()
     {
-        return $this->belongsTo(Post::class, 'postId', 'id');
+        return $this->belongsTo(Auction_product::class);
     }
+
 }

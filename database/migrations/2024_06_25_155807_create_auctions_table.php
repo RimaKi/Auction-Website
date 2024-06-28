@@ -11,15 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('auctions', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('description');
-            $table->unsignedInteger('categoryId');
-            $table->float('minimumPrice');
-            $table->string('unit');
-            $table->float('bidAmount');
-            $table->unsignedInteger('userId');
+            $table->string('title')->nullable();
+            $table->string('description')->nullable();
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->unsignedInteger('user_id');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('auctions');
     }
 };

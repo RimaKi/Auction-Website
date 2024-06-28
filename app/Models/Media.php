@@ -9,21 +9,19 @@ use Illuminate\Database\Eloquent\Model;
 class Media extends Model
 {
     use HasFactory;
-    protected $fillable=[
+
+    protected $fillable = [
         'description',
-        'filePath',
+        'path',
         'type',
         'size',
-        'postId'
+        'fileable_id',
+        'fileable_type'
     ];
-    protected function casts(): array
+
+    public function fileable()
     {
-        return [
-            'type' => FileType::class,
-        ];
+        return $this->morphTo();
     }
 
-    public function post(){
-        return $this->belongsTo(Post::class,'postId','id');
-    }
 }

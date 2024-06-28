@@ -17,13 +17,13 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'firstName',
-        'lastName',
+        'first_name',
+        'last_name',
         'email',
         'phone',
         'password',
-        'profile',
-        'isMale',
+        'is_male',
+        'is_admin'
     ];
 
     /**
@@ -49,13 +49,22 @@ class User extends Authenticatable
         ];
     }
 
-    public function posts()
+    public function products()
     {
-        return $this->hasMany(Post::class, 'userId', 'id');
+        return $this->hasMany(Product::class);
+    }
+
+    public function auctions()
+    {
+        return $this->hasMany(Auction::class);
     }
 
     public function purchaseOffers()
     {
         return $this->hasMany(PurchaseOffer::class, 'userId', 'id');
+    }
+
+    public function profile(){
+        return $this->morphOne(Media::class,'fileable');
     }
 }
