@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('purchase_offers', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('auction_product_id');
-            $table->unsignedInteger('userId');
+            $table->unsignedInteger('user_id');
             $table->float('amount');
             $table->timestamps();
         });

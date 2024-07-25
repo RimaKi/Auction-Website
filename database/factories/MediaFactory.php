@@ -19,7 +19,7 @@ class MediaFactory extends Factory
     {
         return [
             'description'=>$this->faker->text,
-            'path'=>'products/flower.jpeg',
+            'path'=>'Product/flower.jpeg',
             'type'=>'photo',
             'size'=>$this->faker->randomFloat(3,1,9000),
             'fileable_id'=>Product::all()->shuffle()->first()->id,

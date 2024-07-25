@@ -18,7 +18,7 @@ class Type extends Model
         return $this->hasMany(Product::class);
     }
 
-    public function icon()
+    public function media()
     {
         return $this->morphOne(Media::class, 'fileable');
     }

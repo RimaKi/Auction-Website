@@ -15,13 +15,13 @@ class TypesSeeder extends Seeder
     public function run(): void
     {
         $types = [
-            ['name'=>'YouTube','icon'=>'iconTypes/Facebook.png'],
-            ['name'=>'Facebook', 'icon'=>'iconTypes/YouTube.png'],
-            ['name'=>'Instagram', 'icon'=>'iconTypes/Instagram.png'],
-            ['name'=>'Tiktok', 'icon'=>'iconTypes/Tiktok.png'],
-            ['name'=>'Twitter', 'icon'=>'iconTypes/Twitter.png'],
-            ['name'=>'Telegram', 'icon'=>'iconTypes/Telegram.png'],
-            ['name'=>'Snapchat', 'icon'=>'iconTypes/Snapchat.png']
+            ['name'=>'Facebook','icon'=>'Type/Facebook.png'],
+            ['name'=>'YouTube', 'icon'=>'Type/YouTube.png'],
+            ['name'=>'Instagram', 'icon'=>'Type/Instagram.png'],
+            ['name'=>'Tiktok', 'icon'=>'Type/Tiktok.png'],
+            ['name'=>'Twitter', 'icon'=>'Type/Twitter.png'],
+            ['name'=>'Telegram', 'icon'=>'Type/Telegram.png'],
+            ['name'=>'Snapchat', 'icon'=>'Type/Snapchat.png']
         ];
         foreach ($types as $type){
             $typeModel = Type::create([

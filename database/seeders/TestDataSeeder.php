@@ -29,8 +29,29 @@ class TestDataSeeder extends Seeder
         ]);
         $admin->save();
 
+        $uesr = new User([
+            'first_name' => 'fawzy',
+            'last_name' => 'Al fawz',
+            'email' => 'fawzy@gmail.com',
+            'phone' => '+963999999999',
+            'password' => '123123123',
+            'is_male' => true,
+            'is_admin' => false
+        ]);
+        $uesr->save();
+
         $auctions = Auction::factory(4)->create();
+        Product::factory(3)->create([
+            'user_id'=>2
+        ])->each(function ($p) {
+            $media = Media::factory(2)->create([
+                'fileable_id' => $p->id,
+                'fileable_type' => Product::class
+            ]);
+        });
+
         foreach ($auctions as $auction) {
+
             $products = Product::factory(3)->create()->each(function ($p) use ($auction) {
                 $j = 3;
                 $media = Media::factory(2)->create([
@@ -45,6 +66,7 @@ class TestDataSeeder extends Seeder
                     'auction_product_id' => $aucPro->id,
                 ]);
             });
+
         }
 
         Auction::query()->where('end_date', '<=', Carbon::now())->get()->each(function ($a) {

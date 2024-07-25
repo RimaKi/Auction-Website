@@ -20,6 +20,7 @@ class Product extends Model
         'closing_price',
         'reach_rate',
         'status'
+
     ];
 
     public function user()
@@ -37,7 +38,8 @@ class Product extends Model
         return $this->hasMany(Auction_product::class);
     }
 
-    public function medias(){
-        return $this->morphMany(Media::class,'fileable');
+    public function media()
+    {
+        return $this->morphMany(Media::class, 'fileable');
     }
 }

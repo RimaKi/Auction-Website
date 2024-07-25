@@ -11,7 +11,7 @@ class Purchase_offer extends Model
 
     protected $fillable = [
         'auction_product_id',
-        'userId',
+        'user_id',
         'amount',
     ];
 

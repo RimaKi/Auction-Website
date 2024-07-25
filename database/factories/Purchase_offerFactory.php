@@ -20,7 +20,7 @@ class Purchase_offerFactory extends Factory
     {
         return [
             'auction_product_id'=>Auction_product::all()->shuffle()->first()->id,
-            'userId'=>User::factory()->create(['is_admin' => false])->id,
+            'user_id'=>User::factory()->create(['is_admin' => false])->id,
             'amount' => rand(500,5000) + (rand(50,250)*rand(1,10))
         ];
     }

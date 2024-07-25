@@ -14,6 +14,9 @@ class Auction_product extends Model
         'product_id',
         'purchase_offer_id'
     ];
+    protected $appends=[
+        'topOffer'
+    ];
 
     public function auction()
     {
@@ -32,5 +35,9 @@ class Auction_product extends Model
     public function purchase_offers()
     {
         return $this->hasMany(Purchase_offer::class,'auction_product_id','id');
+    }
+
+    public function getTopOfferAttribute(){
+        return $this->purchase_offers()->max('amount');
     }
 }

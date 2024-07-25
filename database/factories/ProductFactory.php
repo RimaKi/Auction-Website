@@ -28,7 +28,7 @@ class ProductFactory extends Factory
             'min_price' => rand(500,5000),
             'closing_price' => rand(7000,10000),
             'reach_rate' => $this->faker->randomFloat(3,1000),
-//            'status'=>$this->faker->randomElements(['pending','publish','sold','rejected'])
+//            'status'=>$this->faker->randomElements(['pending','publish','sold','rejected']),
             'status' => 'publish'
         ];
     }
