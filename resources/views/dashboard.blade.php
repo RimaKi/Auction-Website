@@ -5,5 +5,6 @@
         </h2>
     </x-slot>
 
+
     @include('user-pages.body-home')
 </x-app-layout>

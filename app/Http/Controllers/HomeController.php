@@ -21,9 +21,16 @@ class HomeController extends Controller
                 return $q->whereDate('end_date', "<=", $request->end_date);
             })->where('end_date', '>=', Carbon::now())->get();
 
+        if(auth()->check() && auth()->user()->is_admin){
+            return redirect('/admin-dashboard');
+        }
         return view('dashboard',
             ['auctions' => $auctions, 'search' => $request->search, 'start_date' => $request->start_date, 'end_date' => $request->end_date]
         );
+    }
+    public function viewDashboard(){
+        $auctions = Auction::query()->orderBy('end_date','DESC')->get();
+        return view('admin-pages.main-page',['auctions'=>$auctions]);
     }
 
 

@@ -51,7 +51,11 @@ class RegisteredUserController extends Controller
             event(new Registered($user));
 
             Auth::login($user);
-            return redirect(route('dashboard', absolute: false));
+            if($user->is_admin){
+                return view('admin-pages.admin-dashboard');
+            }else{
+                return redirect(route('dashboard', absolute: false));
+            }
         } catch (\Exception $exception) {
             return $exception->getMessage();
         }

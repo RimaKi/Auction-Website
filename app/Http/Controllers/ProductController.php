@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Helper\FileHelper;
 use App\Http\Requests\AddOldProductRequest;
+use App\Http\Requests\EditAuctionRequest;
 use App\Http\Requests\ProductRequest;
 use App\Models\Auction_product;
 use App\Models\Product;
 use App\Models\Purchase_offer;
 use App\Models\Type;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
@@ -91,14 +93,42 @@ class ProductController extends Controller
         return view('user-pages.history', ['products' => $products, 'offers' => $offers]);
     }
 
-    public function view($id){
-        $product = Product::where('id',$id)->with(['auction_products'=>function($q){
-            $q->with(['auction','purchase_offers'=>function($query){
+    public function view($id)
+    {
+        $product = Product::where('id', $id)->with(['media', 'auction_products' => function ($q) {
+            $q->with(['auction'=>function($query){
+                $query->orderBy('created_at', 'DESC');
+            }, 'purchase_offers' => function ($query) {
                 $query->orderBy('created_at', 'DESC')->with('user');
             }]);
         }])->first();
-//        return $product;
-        return view('user-pages.view-product-details',['product'=>$product]);
+        if (auth()->check() && auth()->user()->is_admin) {
+            return view('admin-pages.view-product-details', ['product' => $product]);
+        }
+        return view('user-pages.view-product-details', ['product' => $product]);
 
     }
+
+    public function viewPending(Request $request)
+    {
+        $products = Product::query()->where('status', 'pending')
+            ->when($request->search, function ($q) use ($request) {
+                return $q->where('name', 'like', "%$request->search%");
+            })
+            ->get();
+        return view('admin-pages.pending-products', ['products' => $products]);
+    }
+
+    public function changeStatus(Request $request,Product $id){
+        $request->validate(['status'=>['required','boolean']]);
+        if($request->status){
+            $id->update(['status'=>'publish']);
+        }elseif (!$request->status){
+            $id->update(['status'=>'rejected']);
+        }
+        return redirect()->back();
+    }
+
+
+
 }

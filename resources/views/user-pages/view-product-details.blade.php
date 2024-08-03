@@ -2,51 +2,7 @@
     <div class="min-h-screen flex flex-col  items-center pt-6 sm:pt-0 bg-gray-100">
         <div class="w-2/3  mt-8 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
             <div>
-                <div class="w-3/4 my-6">
-                    <table class="mx-4">
-                        <tr>
-                            <td class="font-black w-28">Name :</td>
-                            <td>{{$product['name']}}</td>
-                        </tr>
-                        <tr>
-                            <td class="font-black w-28">Description :</td>
-                            <td>{{$product['description']}}</td>
-                        </tr>
-                        <tr>
-                            <td class="font-black w-28">Link :</td>
-                            <td>{{$product['link']}}</td>
-                        </tr>
-                        <tr>
-                            <td class="font-black w-28">Status :</td>
-                            <td class="rounded-lg  {{$product['status'] == 'publish' ? 'text-green-500' : ($product['status']== 'pending' ? 'text-fuchsia-500' :'text-red-500') }}">
-                                {{$product['status'] }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="font-black w-28">Type :</td>
-                            <td>{{$product['type']['name']}}</td>
-                        </tr>
-                        <tr>
-                            <td class="font-black w-28">Bid Amount :</td>
-                            <td>{{$product['bid_amount']}}</td>
-                        </tr>
-                        <tr>
-                            <td class="font-black w-28">Min Price :</td>
-                            <td>{{$product['min_price']}}</td>
-                        </tr>
-                        <tr>
-                            <td class="font-black w-28">Closing Price :</td>
-                            <td>{{$product['closing_price']}}</td>
-                        </tr>
-                        <tr>
-                            <td class="font-black w-28">Reach Rate :</td>
-                            <td>{{$product['reach_rate']}}</td>
-                        </tr>
-                        <tr>
-                            <td class="font-black w-28">Created At :</td>
-                            <td>{{$product['created_at']}}</td>
-                        </tr>
-                    </table>
+                @include('layouts.auction.product-info',['product'=>$product])
                 </div>
                 <hr>
                 <div>

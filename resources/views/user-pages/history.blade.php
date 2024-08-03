@@ -66,33 +66,10 @@
                                         <td></td>
                                         <td>
                                             <a href="{{route('product-details',['id'=>$product['id']])}}"
-                                               class="flex justify-end mr-2 underline text-fuchsia-500/75">view offers</a>
+                                               class="flex justify-end mr-2 underline text-fuchsia-500/75">view
+                                                offers</a>
                                         </td>
                                     </tr>
-{{--                                    <tr>--}}
-{{--                                        <td class="font-black w-28">Type :</td>--}}
-{{--                                        <td>{{$product['type']['name']}}</td>--}}
-{{--                                    </tr>--}}
-{{--                                    <tr>--}}
-{{--                                        <td class="font-black w-28">Bid Amount :</td>--}}
-{{--                                        <td>{{$product['bid_amount']}}</td>--}}
-{{--                                    </tr>--}}
-{{--                                    <tr>--}}
-{{--                                        <td class="font-black w-28">Min Price :</td>--}}
-{{--                                        <td>{{$product['min_price']}}</td>--}}
-{{--                                    </tr>--}}
-{{--                                    <tr>--}}
-{{--                                        <td class="font-black w-28">Closing Price :</td>--}}
-{{--                                        <td>{{$product['closing_price']}}</td>--}}
-{{--                                    </tr>--}}
-{{--                                    <tr>--}}
-{{--                                        <td class="font-black w-28">Reach Rate :</td>--}}
-{{--                                        <td>{{$product['reach_rate']}}</td>--}}
-{{--                                    </tr>--}}
-{{--                                    <tr>--}}
-{{--                                        <td class="font-black w-28">Created At :</td>--}}
-{{--                                        <td>{{$product['created_at']}}</td>--}}
-{{--                                    </tr>--}}
                                 </table>
                             </div>
                             <div class="inline-flex w-1/4">
@@ -135,8 +112,6 @@
                                         <td class="font-black pr-3">created At :</td>
                                         <td>{{$offer['created_at']}}</td>
                                     </tr>
-
-
                                 </table>
                             </div>
                         @endforeach

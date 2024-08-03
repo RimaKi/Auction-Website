@@ -2,49 +2,7 @@
     <div class="flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
         <div class="w-7/12 mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
             <div>
-                <table class="mx-auto my-11 w-2/3 table-auto">
-                    <tr>
-                        <td class="font-black">Title :</td>
-                        <td class="pl-2">{{$data['product']['name']}}</td>
-                    </tr>
-                    <tr>
-                        <td class="font-black w-28">Description :</td>
-                        <td class="pl-2">{{$data['product']['description']}}</td>
-                    </tr>
-                    <tr>
-                        <td class="font-black">Link :</td>
-                        <td class="pl-2">{{$data['product']['link']}}</td>
-                    </tr>
-                    <tr>
-                        <td class="font-black">Type :</td>
-                        <td class="pl-2">{{$data['product']['type']['name']}}</td>
-                    </tr>
-                    <tr>
-                        <td class="font-black">Bid Amount :</td>
-                        <td class="pl-2">{{$data['product']['bid_amount']}}</td>
-                    </tr>
-                    <tr>
-                        <td class="font-black">Min Price :</td>
-                        <td class="pl-2">{{$data['product']['min_price']}}</td>
-                    </tr>
-                    <tr>
-                        <td class="font-black">Closing Price :</td>
-                        <td class="pl-2">{{$data['product']['closing_price']}}</td>
-                    </tr>
-                    <tr>
-                        <td class="font-black">Reach Rate :</td>
-                        <td class="pl-2">{{$data['product']['reach_rate']}}</td>
-                    </tr>
-                    <tr>
-                        <td class="font-black">Status :</td>
-                        <td class="pl-2 {{$data['product']['status'] == 'publish' ? 'text-green-500':'text-red-600' }}">{{$data['product']['status']}}</td>
-                    </tr>
-                    <tr>
-                        <td class="font-black">Top Offer :</td>
-                        <td class="pl-2 text-green-500">{{$data['top_offer']}}</td>
-                    </tr>
-
-                </table>
+                @include('layouts.auction.product-info',['data'=>$data,'product'=>$data['product']])
                 <div class="mb-8">
                     @if($data['product']['status'] == 'publish')
                         @if(count($data['purchase_offers'])!=0)

@@ -10,21 +10,25 @@
                     </a>
                 </div>
 
-                {{--                <!-- Navigation Links -->--}}
-                {{--                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">--}}
-                {{--                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">--}}
-                {{--                        {{ __('Dashboard') }}--}}
-                {{--                    </x-nav-link>--}}
-                {{--                </div>--}}
+                @if(auth()->user()->is_admin)
+                    <!-- Navigation Links -->
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('admin')" :active="request()->routeIs('admin')">
+                            {{ __('Dashboard') }}
+                        </x-nav-link>
+                    </div>
+                @endif
             </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
-                <a
-                    class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
-                    href="{{route('history')}}">
-                    History
-                </a>
+                @if(!auth()->user()->is_admin)
+                    <a
+                        class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
+                        href="{{route('history')}}">
+                        History
+                    </a>
+                @endif
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button
